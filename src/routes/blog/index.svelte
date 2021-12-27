@@ -1,14 +1,21 @@
 <script context="module">
   import { APIURL } from "$utils/constants";
+  import { onMount } from 'svelte'; 
+  
+  onMount(
+      async () => {
+		if(typeof window !== 'undefined'){
+    limit = localStorage.getItem('limit');
+    page = localStorage.getItem('page');
+  }
+	}
+  )
   //
   let limit;
   let page;
   let postLength;
 
-  if(typeof window !== 'undefined'){
-    limit = localStorage.getItem('limit');
-    page = localStorage.getItem('page');
-  }
+  
 
   export async function load(ctx){
     let posts;
